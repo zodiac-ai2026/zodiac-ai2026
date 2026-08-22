@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070707">
+
     <title>ZODIAC AI</title>
 
     <link rel="stylesheet" href="style.css">
@@ -10,59 +12,138 @@
 
 <body>
 
-<header>
-    <div class="logo">ZODIAC</div>
+    <!-- HEADER -->
+    <header class="topbar">
 
-    <button id="menuBtn" class="menu-btn">☰</button>
-</header>
+        <div class="logo">
+            ZODIAC
+        </div>
 
-<aside id="menu">
+        <button
+            id="menuBtn"
+            class="menu-btn"
+            aria-label="باز کردن منو"
+            type="button"
+        >
+            ☰
+        </button>
 
-    <div class="menu-title">ZODIAC AI</div>
+    </header>
 
-    <button>💬 چت هوشمند</button>
-    <button>💻 برنامه‌نویسی</button>
-    <button>🎨 ساخت تصویر</button>
-    <button>✏️ ویرایش تصویر</button>
-    <button>📁 فایل‌ها</button>
-    <button>🌐 جست‌وجو</button>
-    <button>🎙️ صدا</button>
-    <button>🧠 حافظه</button>
 
-</aside>
+    <!-- SIDE MENU -->
+    <aside id="menu" class="side-menu">
 
-<main>
+        <div class="menu-header">
+            <div class="menu-logo">✦ ZODIAC</div>
+            <div class="menu-subtitle">AI Assistant</div>
+        </div>
 
-    <section class="welcome">
+        <button class="menu-item" type="button">
+            <span>💬</span>
+            <span>چت هوشمند</span>
+        </button>
 
-        <div class="zodiac-icon">✦</div>
+        <button class="menu-item" type="button">
+            <span>💻</span>
+            <span>برنامه‌نویسی</span>
+        </button>
 
-        <h1>
-            سلام، من <span>ZODIAC</span> هستم.
-        </h1>
+        <button class="menu-item" type="button">
+            <span>🎨</span>
+            <span>ساخت تصویر</span>
+        </button>
 
-        <p>
-            دستیار هوشمند همه‌کاره تو
-        </p>
+        <button class="menu-item" type="button">
+            <span>✏️</span>
+            <span>ویرایش تصویر</span>
+        </button>
 
-    </section>
+        <button class="menu-item" type="button">
+            <span>📁</span>
+            <span>فایل‌ها</span>
+        </button>
 
-    <section id="chat"></section>
+        <button class="menu-item" type="button">
+            <span>🌐</span>
+            <span>جست‌وجوی وب</span>
+        </button>
 
-    <div class="input-area">
+        <button class="menu-item" type="button">
+            <span>🎙️</span>
+            <span>صدا</span>
+        </button>
 
-        <textarea
-            id="message"
-            placeholder="از ZODIAC چیزی بپرس..."
-        ></textarea>
+        <button class="menu-item" type="button">
+            <span>🧠</span>
+            <span>حافظه</span>
+        </button>
 
-        <button id="send">➤</button>
+    </aside>
+
+
+    <!-- OVERLAY -->
+    <div id="overlay" class="overlay"></div>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <section class="welcome">
+
+            <div class="zodiac-icon">
+                ✦
+            </div>
+
+            <h1>
+                سلام، من
+                <span>ZODIAC</span>
+                هستم.
+            </h1>
+
+            <p>
+                دستیار هوشمند همه‌کاره تو
+            </p>
+
+        </section>
+
+
+        <!-- CHAT -->
+        <section
+            id="chat"
+            class="chat"
+            aria-live="polite"
+        ></section>
+
+    </main>
+
+
+    <!-- INPUT -->
+    <div class="input-wrapper">
+
+        <div class="input-area">
+
+            <textarea
+                id="message"
+                rows="1"
+                placeholder="از ZODIAC چیزی بپرس..."
+                autocomplete="off"
+            ></textarea>
+
+            <button
+                id="send"
+                type="button"
+                aria-label="ارسال پیام"
+            >
+                ➤
+            </button>
+
+        </div>
 
     </div>
 
-</main>
 
-<script src="app.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
