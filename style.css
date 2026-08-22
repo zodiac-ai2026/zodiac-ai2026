@@ -1,18 +1,502 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    background: #070707;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(231, 184, 63, 0.10), transparent 35%),
+        #070707;
+    color: #ffffff;
+    font-family: Arial, Tahoma, sans-serif;
+    overflow-x: hidden;
 }
 
-h1 {
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background: rgba(10, 10, 10, 0.90);
+    border-bottom: 1px solid rgba(231, 184, 63, 0.20);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    z-index: 100;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
     color: #e7b83f;
-    margin-top: 100px;
-    font-size: 45px;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 10px rgba(231, 184, 63, 0.25);
 }
 
-p {
-    color: #aaa;
-    font-size: 18px;
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menu-btn {
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(231, 184, 63, 0.30);
+    border-radius: 15px;
+
+    background: #111111;
+    color: #e7b83f;
+
+    font-size: 23px;
+    cursor: pointer;
+
+    transition: 0.2s;
 }
+
+.menu-btn:active {
+    transform: scale(0.92);
+    background: #1b1b1b;
+}
+
+/* =========================
+   SIDE MENU
+========================= */
+
+#menu {
+    position: fixed;
+
+    top: 0;
+    right: -310px;
+
+    width: 290px;
+    height: 100vh;
+
+    padding: 90px 18px 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111111 0%,
+            #090909 100%
+        );
+
+    border-left: 1px solid rgba(231, 184, 63, 0.25);
+
+    box-shadow:
+        -15px 0 50px rgba(0, 0, 0, 0.55);
+
+    z-index: 200;
+
+    transition: right 0.30s ease;
+
+    overflow-y: auto;
+}
+
+#menu.active {
+    right: 0;
+}
+
+/* MENU TITLE */
+
+.menu-title {
+    margin-bottom: 25px;
+
+    color: #e7b83f;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+/* MENU BUTTONS */
+
+#menu button {
+    width: 100%;
+
+    margin-bottom: 10px;
+    padding: 15px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 17px;
+
+    background: #151515;
+
+    color: #eeeeee;
+
+    font-size: 15px;
+    text-align: right;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#menu button:hover {
+    background: #1d1d1d;
+    border-color: rgba(231, 184, 63, 0.35);
+    color: #e7b83f;
+}
+
+#menu button:active {
+    transform: scale(0.97);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 100%;
+    max-width: 900px;
+
+    min-height: 100vh;
+
+    margin: auto;
+
+    padding:
+        110px 16px
+        150px;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    text-align: center;
+
+    padding-top: 65px;
+}
+
+.zodiac-icon {
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 22px;
+
+    border: 1px solid rgba(231, 184, 63, 0.35);
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(231, 184, 63, 0.15),
+            rgba(231, 184, 63, 0.02)
+        );
+
+    color: #e7b83f;
+
+    font-size: 45px;
+
+    box-shadow:
+        0 0 40px rgba(231, 184, 63, 0.08);
+}
+
+.welcome h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(25px, 6vw, 38px);
+    line-height: 1.5;
+}
+
+.welcome h1 span {
+    color: #e7b83f;
+
+    text-shadow:
+        0 0 18px rgba(231, 184, 63, 0.20);
+}
+
+.welcome p {
+    margin-top: 12px;
+
+    color: #777777;
+
+    font-size: 16px;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+#chat {
+    width: 100%;
+
+    margin-top: 45px;
+}
+
+.message {
+    max-width: 86%;
+
+    margin: 12px 0;
+
+    padding: 14px 17px;
+
+    border-radius: 20px;
+
+    line-height: 1.9;
+
+    font-size: 15px;
+
+    word-wrap: break-word;
+
+    animation: messageIn 0.25s ease;
+}
+
+@keyframes messageIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* USER MESSAGE */
+
+.message.user {
+    margin-right: auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #29230f,
+            #1c180b
+        );
+
+    border: 1px solid rgba(231, 184, 63, 0.25);
+
+    color: #f1d36b;
+
+    border-bottom-right-radius: 7px;
+}
+
+/* AI MESSAGE */
+
+.message.ai {
+    margin-left: auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #181818,
+            #101010
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    color: #eeeeee;
+
+    border-bottom-left-radius: 7px;
+}
+
+/* =========================
+   INPUT AREA
+========================= */
+
+.input-area {
+    position: fixed;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    width: min(900px, calc(100% - 24px));
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 9px;
+
+    padding: 9px;
+
+    background:
+        rgba(18, 18, 18, 0.94);
+
+    border: 1px solid rgba(231, 184, 63, 0.23);
+
+    border-radius: 23px;
+
+    box-shadow:
+        0 12px 45px rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    z-index: 150;
+}
+
+/* TEXTAREA */
+
+textarea {
+    flex: 1;
+
+    min-height: 50px;
+    max-height: 140px;
+
+    padding: 14px;
+
+    resize: none;
+
+    outline: none;
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+textarea::placeholder {
+    color: #686868;
+}
+
+textarea:focus::placeholder {
+    color: #4d4d4d;
+}
+
+/* SEND BUTTON */
+
+#send {
+    flex: 0 0 52px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0c54b,
+            #c99b28
+        );
+
+    color: #090909;
+
+    font-size: 21px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(231, 184, 63, 0.15);
+
+    transition: 0.2s;
+}
+
+#send:active {
+    transform: scale(0.92);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        height: 62px;
+        padding: 0 13px;
+    }
+
+    .logo {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .menu-btn {
+        width: 43px;
+        height: 43px;
+    }
+
+    main {
+        padding:
+            90px 12px
+            135px;
+    }
+
+    .welcome {
+        padding-top: 55px;
+    }
+
+    .zodiac-icon {
+        width: 72px;
+        height: 72px;
+
+        border-radius: 23px;
+
+        font-size: 38px;
+    }
+
+    .welcome h1 {
+        font-size: 25px;
+    }
+
+    .welcome p {
+        font-size: 14px;
+    }
+
+    #menu {
+        width: 280px;
+    }
+
+    .message {
+        max-width: 91%;
+        font-size: 14px;
+    }
+
+    .input-area {
+        bottom: 10px;
+
+        width: calc(100% - 16px);
+
+        border-radius: 20px;
+    }
+
+    #send {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+    }
+        }
